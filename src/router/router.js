@@ -10,12 +10,13 @@ import News from '../components/News.vue';
 import UserList from '../components/Users/UserList.vue';
 import UserAdd from '../components/Users/UserAdd.vue';
 import DemoVuex from '../components/DemoVuex.vue';
+import Test from '../components/test.vue';
 
 //2.配置路由
 const routes = [
 
 {path:'/home',component:Home},
-{path:'/news',component:News},
+{path:'/test',component:Test},
 {path:'/demovuex',component:DemoVuex},
 {path:'/user',component:User}, // user前面要加‘/’
   {
@@ -33,7 +34,7 @@ const routes = [
     component: resolve => require(['../components/Detail.vue'],resolve)
   },
 
-  {path:'*',redirect:'/home'}  //默认跳转路由
+  // {path:'*',redirect:'/home'}  //默认跳转路由
 ]
 
 //3.实例化VueRouter

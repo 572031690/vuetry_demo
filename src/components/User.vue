@@ -1,10 +1,12 @@
 <template>
-  <div id="user">
+  <div id="User">
             <!-- <swiper :key="item.length">
             <div class="swiper-slide" v-for='item in 10 ' :key="item">
               {{item}}
             </div>  
             </swiper>     -->
+
+            <swiper v-on:getSon='getSwiperSon'></swiper>
       <div class="left">
           <ul>
                 <li>
@@ -46,6 +48,9 @@ export default {
     addnum(){
        //改变vuex store里面的数据
           this.$store.commit('INCCOUNT');
+    },
+    getSwiperSon (data,data2) {
+      console.log(data,data2);
     }
   },
 

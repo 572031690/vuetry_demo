@@ -5,6 +5,8 @@
         </div>
 
         <div class="swiper-pagination"></div>
+
+        <button @click="sendToUser">点击子组件调用父组件</button>
     </div>
 </template>
 <script>
@@ -12,7 +14,7 @@
 // import 'swiper/swiper-bundle.min.css'
 export default {
     mounted() {
-    //    console.log('swiper');
+       console.log('swiper');
     //    new Swiper('.a',{
     //        loop:true, 
     //        //如果要分页
@@ -20,7 +22,12 @@ export default {
     //            el:'.swiper-pagination'
     //        }
     //    }) 
-    },    
+    },   
+    methods: {
+        sendToUser() {
+            this.$emit('getSon', '发送给父组件：',1111111111)
+        }
+    } 
 }
 
 </script>

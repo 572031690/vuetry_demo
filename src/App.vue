@@ -1,25 +1,47 @@
 <template>
   <div id="app">
-    <div ref="ddd" :class="isFixed ? 'fixed' : '' "  v-show="isTopBarShow">
-      <router-link to="/user" tag="span" active-class="myactive">User</router-link>
+    <div ref="ddd" :class="isFixed ? 'fixed' : '' "  v-show="isTopBarShow" style="border: 1px solid black;">
+      <!-- <router-link to="/user" tag="span" active-class="myactive">User</router-link>
       <router-link to="/home" tag="span" active-class="myactive">home</router-link>
       <router-link to="/demovuex" tag="span" active-class="myactive">vuex</router-link>
-      <router-link to="/news" active-class="myactive">news-Vuex数据持久化</router-link>
+      <router-link to="/news" active-class="myactive">news-Vuex数据持久化</router-link> -->
+      <span @click="goCom(index)" v-for="(item, index) in ComponentList" :class="{'myactive': i === index}">{{item}}</span>
     </div>
     <hr />
-    <router-view></router-view>
+    <!-- <User></User> -->
+    <!-- <router-view></router-view> -->
+
+    
+
+    <component :is="ComponentName"></component>
   </div>
 </template>
 
 <script>
+import User from './components/User.vue'
+import Home from './components/Home.vue'
+import DemoVuex from './components/DemoVuex.vue'
+import News from './components/News.vue'
+import test from './components/test.vue'
+
 import axios from "axios";
 import {  mapState } from 'vuex'
 // import bus from './Bus/index'
 export default {
+  components: {
+    User,
+    Home,
+    News,
+    DemoVuex,
+    test
+  },
   data() {
     return {
       isFixed: false,
       // isShow: true
+      ComponentList:['User','Home','News','DemoVuex','test'],
+      i: 0,
+      ComponentName: 'User'
     };
   },
   computed: {
@@ -51,6 +73,10 @@ export default {
     window.onscroll = null
   },
   methods: {
+    goCom(e) { // 组件is跳转
+      this.i = e
+      this.ComponentName = this.ComponentList[e]
+    },
     //吸顶
     handleScroll(){
       //获取屏幕轮播的的位置
@@ -79,5 +105,11 @@ export default {
   left: 0px;
   width: 100%;
   /* background: #000; */
+}
+span {
+  cursor: pointer;
+  background: #eee;
+  margin-right: 5px;
+  padding: 2px;
 }
 </style>
