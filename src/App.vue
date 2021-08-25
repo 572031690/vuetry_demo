@@ -11,9 +11,8 @@
     <!-- <User></User> -->
     <!-- <router-view></router-view> -->
 
-    
-
-    <component :is="ComponentName"></component>
+    <component :is="ComponentName" v-show="isTopBarShow"></component>
+    <router-view />
   </div>
 </template>
 
@@ -33,12 +32,11 @@ export default {
     Home,
     News,
     DemoVuex,
-    test
+    test,
   },
   data() {
     return {
       isFixed: false,
-      // isShow: true
       ComponentList:['User','Home','News','DemoVuex','test'],
       i: 0,
       ComponentName: 'User'
@@ -60,6 +58,7 @@ export default {
     // })
   },
   mounted() {
+    console.log('object:', this.$router);
     //因为我们vue.config.js里面配置了跨域配置只要是以/api开头的都会被代理
     axios.get("/api/batch?v=1&sdk=1.7.11").then((res) => {
       console.log(res, "------------");
@@ -84,10 +83,8 @@ export default {
       //获取ddd的高度
       console.log(this.$refs.ddd.offsetHeight);
       if(document.documentElement.scrollTop > this.$refs.ddd.offsetHeight*4){
-        // console.log('1111')
         this.isFixed = true
       }else{
-        // console.log('22222');
         this.isFixed = false
       }
     }

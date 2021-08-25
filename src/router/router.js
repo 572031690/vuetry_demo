@@ -2,7 +2,6 @@
 import Vue from 'vue';
 //引入router
 import VueRouter from 'vue-router';
-Vue.use(VueRouter);
 //1.创建组件
 import User from '../components/User.vue';
 import Home from '../components/Home.vue';
@@ -11,6 +10,9 @@ import UserList from '../components/Users/UserList.vue';
 import UserAdd from '../components/Users/UserAdd.vue';
 import DemoVuex from '../components/DemoVuex.vue';
 import Test from '../components/test.vue';
+// import Detail from '../components/Detail.vue'
+
+Vue.use(VueRouter);
 
 //2.配置路由
 const routes = [
@@ -29,9 +31,9 @@ const routes = [
     ]
   },
   {
-    path:'/detail/:id',
-    name: 'detail',
-    component: resolve => require(['../components/Detail.vue'],resolve)
+    path:'/isnews/:id',
+    name: 'isnews',
+    component: resolve => require(['../components/inNews.vue'],resolve)
   },
 
   // {path:'*',redirect:'/home'}  //默认跳转路由
@@ -43,6 +45,11 @@ const router = new VueRouter({
   routes //缩写 相当于 routes: routes
 })
 
+
+const VueRouterPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push (to) {
+  return VueRouterPush.call(this, to).catch(err => err)
+}
 //5.<router-view></router-view>放在app.vue里面
 //6.在app.vue 内引入连接<router-link to="/home">首页</router-link>
 

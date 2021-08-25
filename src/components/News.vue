@@ -36,7 +36,7 @@ export default {
         },
         handleChangePage(id) {
             console.log('dddddddddddd');
-            this.$router.push({name: 'detail' , params: {id: id}})
+            this.$router.push({name: 'isnews', params: {id: 1}})
         }
     },
     mounted(){
