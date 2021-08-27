@@ -1,12 +1,6 @@
 <template>
   <div class="box">
-    <div
-      class="box-center"
-      @click="touch"
-      @mouseenter="showCenter = true"
-      @mouseleave="showCenter = false"
-      ref="centerbody"
-    >
+    <div class="box-center" @mousemove="touch">
       <div class="box-certer-select">
         <span @click="move"> 时间：</span>
         <el-select v-model="value" placeholder="请选择">
@@ -35,11 +29,7 @@
         </div>
       </div>
 
-      <div
-        class="flowwind"
-        :style="{ top: mouse.top, left: mouse.left }"
-        v-show="showCenter"
-      >
+      <div class="flowwind" :style="{ top: mouse.top, left: mouse.left }">
         浮窗
       </div>
     </div>
@@ -118,8 +108,7 @@ export default {
         }
       ],
       value: "2019",
-      mouse: { top: "0%", left: "0%" },
-      showCenter: false
+      mouse: { top: 0, left: 0 }
     };
   },
   methods: {
@@ -129,19 +118,7 @@ export default {
       return map.length;
     },
     touch(e) {
-      // console.log(e.clientX + "," + e.clientY);
-      // console.log(this.$refs.centerbody.getBoundingClientRect());
-      const xyData = this.$refs.centerbody.getBoundingClientRect();
-      // const centerHeight = this.$refs.centerbody.clientHeight;
-      // const centerWidth = this.$refs.centerbody.clientWidth;
-      this.mouse.top = e.clientY + "px";
-      // this.mouse.left = e.clientX + 5 + "px";
-      // this.$refs.centerbody.clientHeight
-      if (e.clientX > xyData.left + xyData.width / 2) {
-        this.mouse.left = xyData.left + xyData.width + "px";
-      } else {
-        this.mouse.left = xyData.left + "px";
-      }
+      console.log(e.clientX + "," + e.clientY);
     },
     move() {
       console.log("ontouchStart" in document);
@@ -163,7 +140,7 @@ export default {
 }
 
 .box-center {
-  /* position: relative; */
+  position: relative;
   border: 1px solid black;
 }
 .box-certer-select {

@@ -2,7 +2,7 @@
   <div class="box">
     <div
       class="box-center"
-      @click="touch"
+      @mousemove="touch"
       @mouseenter="showCenter = true"
       @mouseleave="showCenter = false"
       ref="centerbody"
@@ -130,18 +130,12 @@ export default {
     },
     touch(e) {
       // console.log(e.clientX + "," + e.clientY);
-      // console.log(this.$refs.centerbody.getBoundingClientRect());
-      const xyData = this.$refs.centerbody.getBoundingClientRect();
-      // const centerHeight = this.$refs.centerbody.clientHeight;
-      // const centerWidth = this.$refs.centerbody.clientWidth;
-      this.mouse.top = e.clientY + "px";
-      // this.mouse.left = e.clientX + 5 + "px";
+      // console.log(this.$refs.centerbody.clientHeight);
+      const centerHeight = this.$refs.centerbody.clientHeight;
+      const centerWidth = this.$refs.centerbody.clientWidth;
+      this.mouse.top = e.clientY + 5 + "px";
+      this.mouse.left = e.clientX + 5 + "px";
       // this.$refs.centerbody.clientHeight
-      if (e.clientX > xyData.left + xyData.width / 2) {
-        this.mouse.left = xyData.left + xyData.width + "px";
-      } else {
-        this.mouse.left = xyData.left + "px";
-      }
     },
     move() {
       console.log("ontouchStart" in document);

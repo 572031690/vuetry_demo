@@ -1,14 +1,8 @@
 <template>
   <div class="box">
-    <div
-      class="box-center"
-      @click="touch"
-      @mouseenter="showCenter = true"
-      @mouseleave="showCenter = false"
-      ref="centerbody"
-    >
+    <div class="box-center">
       <div class="box-certer-select">
-        <span @click="move"> 时间：</span>
+        时间：
         <el-select v-model="value" placeholder="请选择">
           <el-option
             v-for="item in options"
@@ -23,8 +17,7 @@
 
       <div class="box-certer-body" v-for="(item, index) in data" :key="index">
         <h2>{{ item.name }}</h2>
-        <span> {{ getTipIndustry(item) }}/{{ item.data.length }}</span>
-        {{ getCity }}
+        <span> {{ getTipIndustry(item) }}/{{ item.data.length }}</span> {{getCity}}
 
         <div class="box-certer-body-box">
           <div v-for="(industrys, i) in item.data" :key="i">
@@ -33,14 +26,6 @@
             </div>
           </div>
         </div>
-      </div>
-
-      <div
-        class="flowwind"
-        :style="{ top: mouse.top, left: mouse.left }"
-        v-show="showCenter"
-      >
-        浮窗
       </div>
     </div>
   </div>
@@ -52,9 +37,9 @@ export default {
     this.getData();
   },
   computed: {
-    getCity() {
-      return 0;
-    }
+      getCity() {
+          return 0
+      }
   },
   data() {
     return {
@@ -69,21 +54,21 @@ export default {
               name: "上城区",
               tip: "已排摸",
               color: "red",
-              status: 1
+              status: 1,
             },
             {
               name: "下城区",
               tip: "",
               color: "red",
-              status: 0
+              status: 0,
             },
             {
               name: "拱墅区",
               tip: "已排摸",
               color: "red",
-              status: 1
-            }
-          ]
+              status: 1,
+            },
+          ],
         },
         {
           name: "宁波市",
@@ -92,61 +77,41 @@ export default {
               name: "江北区",
               tip: "已加油",
               color: "blue",
-              status: 1
+              status: 1,
             },
             {
               name: "镇海区",
               tip: "",
               color: "",
-              status: 0
-            }
-          ]
-        }
+              status: 0,
+            },
+          ],
+        },
       ],
       options: [
         {
           value: "2018",
-          label: "2018"
+          label: "2018",
         },
         {
           value: "2019",
-          label: "2019"
+          label: "2019",
         },
         {
           value: "2020",
-          label: "2020"
-        }
+          label: "2020",
+        },
       ],
       value: "2019",
-      mouse: { top: "0%", left: "0%" },
-      showCenter: false
     };
   },
   methods: {
     getData() {},
     getTipIndustry(item) {
-      const map = item.data.filter(item => item.status === 1);
+      const map = item.data.filter((item) => item.status === 1);
       return map.length;
     },
-    touch(e) {
-      // console.log(e.clientX + "," + e.clientY);
-      // console.log(this.$refs.centerbody.getBoundingClientRect());
-      const xyData = this.$refs.centerbody.getBoundingClientRect();
-      // const centerHeight = this.$refs.centerbody.clientHeight;
-      // const centerWidth = this.$refs.centerbody.clientWidth;
-      this.mouse.top = e.clientY + "px";
-      // this.mouse.left = e.clientX + 5 + "px";
-      // this.$refs.centerbody.clientHeight
-      if (e.clientX > xyData.left + xyData.width / 2) {
-        this.mouse.left = xyData.left + xyData.width + "px";
-      } else {
-        this.mouse.left = xyData.left + "px";
-      }
-    },
-    move() {
-      console.log("ontouchStart" in document);
-    }
-  }
+  },
 };
 </script>
 
@@ -163,17 +128,9 @@ export default {
 }
 
 .box-center {
-  /* position: relative; */
   border: 1px solid black;
 }
 .box-certer-select {
   margin-bottom: 50px;
-}
-.flowwind {
-  position: absolute;
-  height: 30%;
-  width: 20%;
-  /* top: 0; */
-  border: 1px solid blue;
 }
 </style>
