@@ -10,7 +10,6 @@ import UserList from '../components/Users/UserList.vue';
 import UserAdd from '../components/Users/UserAdd.vue';
 import DemoVuex from '../components/DemoVuex.vue';
 import Test from '../components/test.vue';
-import start from '../components/start.vue'
 // import Detail from '../components/Detail.vue'
 
 Vue.use(VueRouter);
@@ -21,7 +20,6 @@ const routes = [
 {path:'/home',component:Home},
 {path:'/test',component:Test},
 {path:'/demovuex',component:DemoVuex},
-{path:'/start',component:start},
 {path:'/user',component:User}, // user前面要加‘/’
   {
     path:'/user',

@@ -22,7 +22,6 @@ import Home from './components/Home.vue'
 import DemoVuex from './components/DemoVuex.vue'
 import News from './components/News.vue'
 import test from './components/test.vue'
-import start from './components/start.vue'
 
 import axios from "axios";
 import {  mapState } from 'vuex'
@@ -34,12 +33,11 @@ export default {
     News,
     DemoVuex,
     test,
-    start
   },
   data() {
     return {
       isFixed: false,
-      ComponentList:['User','Home','News','DemoVuex','test','start'],
+      ComponentList:['User','Home','News','DemoVuex','test'],
       i: 0,
       ComponentName: 'User'
     };
