@@ -12,7 +12,7 @@
     <!-- <router-view></router-view> -->
 
     <component :is="ComponentName" v-show="isTopBarShow"></component>
-    <!-- <router-view /> -->
+    <router-view />
   </div>
 </template>
 

@@ -3,15 +3,15 @@
             <!-- <swiper :key="item.length">
             <div class="swiper-slide" v-for='item in 10 ' :key="item">
               {{item}}
-            </div>
+            </div>  
             </swiper>     -->
 
-            <!-- <swiper v-on:getSon='getSwiperSon'></swiper> -->
+            <swiper v-on:getSon='getSwiperSon'></swiper>
       <div class="left">
           <ul>
                 <li>
                   <router-link to="/user/useradd">添加用户</router-link>
-
+                  
                 </li>
                 <li>
                   <router-link to="/user/userlist">用户列表</router-link>
@@ -27,7 +27,7 @@
           <div class="mgs">mmm</div>
           <div class="mgs">mmm</div>
       </div>
-
+    
   </div>
 </template>
 
@@ -54,7 +54,7 @@ export default {
     }
   },
 
-
+  
 }
 </script>
 
@@ -63,7 +63,7 @@ export default {
        display: flex;
        flex-direction: row;
        width: 800px;
-
+       
    }
    .left{
      display: flex;
